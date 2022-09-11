@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "corePackages.Application", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "corePackacges.CrossCuttingConcerns", "src\corePackages\corePackacges.CrossCuttingConcerns\corePackacges.CrossCuttingConcerns.csproj", "{2792A9BF-8AF5-4B69-984A-3237F9E34729}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "corePackages.Persistence", "src\corePackages\corePackages.Persistence\corePackages.Persistence.csproj", "{262D0C10-D447-42CE-A4A2-8F48B9AD5536}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "corePackages.Persistence", "src\corePackages\corePackages.Persistence\corePackages.Persistence.csproj", "{262D0C10-D447-42CE-A4A2-8F48B9AD5536}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

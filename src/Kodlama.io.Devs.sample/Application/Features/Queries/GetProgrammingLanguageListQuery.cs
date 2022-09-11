@@ -1,4 +1,5 @@
 ﻿using Application.Features.Dtos;
+using Application.Features.Models;
 using Application.Services.Repositories;
 using AutoMapper;
 using corePackages.Application.Request;
@@ -8,25 +9,28 @@ using MediatR;
 
 namespace Application.Features.Queries
 {
-    public class GetProgrammingLanguageListQuery : IRequest<GetProgrammingLanguageListDto>
+    public class GetProgrammingLanguageListQuery : IRequest<ProgrammingLanguageListModel>
     {
         public PageRequest PageRequest { get; set; }
     }
-    public class GetProgrammingLanguageListQueryHandler : IRequestHandler<GetProgrammingLanguageListQuery, GetProgrammingLanguageListDto>
+    public class GetListProgrammingLanguageQueryHandler : IRequestHandler<GetProgrammingLanguageListQuery, ProgrammingLanguageListModel>
     {
-        private readonly IProgrammingLanguageRepository _repository;
+        private readonly IProgrammingLanguageRepository _programmingLanguageRepository;
         private readonly IMapper _mapper;
 
-        public GetProgrammingLanguageListQueryHandler(IProgrammingLanguageRepository repository, IMapper mapper)
+        public GetListProgrammingLanguageQueryHandler(IProgrammingLanguageRepository programmingLanguageRepository, IMapper mapper)
         {
-            _repository = repository;
+            _programmingLanguageRepository = programmingLanguageRepository;
             _mapper = mapper;
         }
 
-        public async Task<GetProgrammingLanguageListDto> Handle(GetProgrammingLanguageListQuery request, CancellationToken cancellationToken)
+        public async Task<ProgrammingLanguageListModel> Handle(GetProgrammingLanguageListQuery request, CancellationToken cancellationToken)
         {
-            IPaginate<ProgrammingLanguage> languageList = await _repository.GetListAsync(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
-            return _mapper.Map<GetProgrammingLanguageListDto>(languageList);
+            IPaginate<ProgrammingLanguage> programmingLanguages = await _programmingLanguageRepository.GetListAsync(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
+
+            ProgrammingLanguageListModel mappedProgrammingLanguageListModel = _mapper.Map<ProgrammingLanguageListModel>(programmingLanguages);
+
+            return mappedProgrammingLanguageListModel;
         }
     }
 }
