@@ -1,4 +1,7 @@
-﻿using Application.Features.Rules;
+﻿using Application.Features.ProgrammingLanguages.Rules;
+using Application.Features.ProgrammingTechnologies.Rules;
+using Application.Features.UserGithubs.Rules;
+using Application.Features.Users.Rules;
 using corePackages.Application.Pipeline.Validation;
 using FluentValidation;
 using MediatR;
@@ -15,8 +18,10 @@ namespace Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            services.AddScoped<ProgrammingLanguageBusinessRules>();
-
+            services.AddScoped<ProgrammingLanguageBusinessRules>(); 
+            services.AddScoped<ProgrammingTechnologyBusinessRules>();
+            services.AddScoped<UserGithubBusinessRules>();
+            services.AddScoped<UserBusinessRules>();
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));

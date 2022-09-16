@@ -1,7 +1,7 @@
-﻿using Application.Features.Command;
-using Application.Features.Dtos;
-using Application.Features.Models;
-using Application.Features.Queries;
+﻿using Application.Features.ProgrammingLanguages.Command;
+using Application.Features.ProgrammingLanguages.Dtos;
+using Application.Features.ProgrammingLanguages.Models;
+using Application.Features.ProgrammingLanguages.Queries;
 using corePackages.Application.Request;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +14,7 @@ namespace WebAPI.Controllers
         [HttpPost("Add")]
         public async Task<IActionResult> Add([FromBody] CreateProgrammingLanguageCommand createCommand)
         {
-            CreateProgmmingLanguageDto result = await Mediator.Send(createCommand);
+            CreateProgrammingLanguageDto result = await Mediator.Send(createCommand);
             return Created("", result);
         }
         [HttpDelete("Delete/{Id}")]

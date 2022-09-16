@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\corePackages\corePackages.Persistence\corePackages.Persistence.csproj" />
+    <ProjectReference Include="..\..\corePackages\corePackages.Security\corePackages.Security.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,15 @@
-﻿
+﻿using Application.Features.Services.Repositories;
 using Application.Services.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Context;
 using Persistence.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Persistence
 {
@@ -18,7 +23,10 @@ namespace Persistence
             });
 
             services.AddScoped<IProgrammingLanguageRepository, ProgrammingLanguageRepository>();
-
+            services.AddScoped<IProgrammingTechnologyRepository, ProgrammingTechnologyRepository>();
+            services.AddScoped<IUserGithubRepository, UserGithubRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
             return services;
         }
     }

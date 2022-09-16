@@ -10,13 +10,16 @@
     <ProjectReference Include="..\..\corePackages\corePackacges.CrossCuttingConcerns\corePackacges.CrossCuttingConcerns.csproj" />
     <ProjectReference Include="..\..\corePackages\corePackages.Application\corePackages.Application.csproj" />
     <ProjectReference Include="..\..\corePackages\corePackages.Persistence\corePackages.Persistence.csproj" />
+    <ProjectReference Include="..\..\corePackages\corePackages.Security\corePackages.Security.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="FluentValidation" Version="11.2.1" />
-    <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\UserOperationClaims\" />
   </ItemGroup>
 
 </Project>
