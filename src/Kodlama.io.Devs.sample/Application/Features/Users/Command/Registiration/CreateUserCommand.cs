@@ -8,6 +8,7 @@ using corePackages.Security.Hashing;
 using corePackages.Security.JWT;
 using Domain.Entities;
 using MediatR;
+using System.Linq.Dynamic.Core.Tokenizer;
 
 namespace Application.Features.Users.Command.Registiration
 {
@@ -33,12 +34,11 @@ namespace Application.Features.Users.Command.Registiration
                 await _businessRules.EmailCanNotBeDuplicatedWhenInserted(request.Email);
                 byte[] passwordHash, passwordSalt;
                 HashingHelper.CreatePasswordHash(request.Password, out passwordHash, out passwordSalt);
-                UserofCreate userofCreate = _mapper.Map<UserofCreate>(request);
-                userofCreate.PasswordHash = passwordHash;   
+                User userofCreate = _mapper.Map<User>(request);
+                userofCreate.PasswordHash = passwordHash;
                 userofCreate.PasswordSalt = passwordSalt;
                 var createdDeveloper = await _repository.AddAsync(userofCreate);
-                var token = _tokenhelper.CreateToken(userofCreate, new List<OperationClaim>());
-
+                var token = _tokenhelper.CreateToken(createdDeveloper, new List<OperationClaim>());
                 return new() { Token = token.Token, Expiration = token.Expiration };
             }
         }

@@ -3,6 +3,7 @@ using Application.Features.Users.Command.Registiration;
 using Application.Features.Users.Dtos;
 using AutoMapper;
 using corePackages.Security.Entities;
+using corePackages.Security.JWT;
 using System;
 using System.Collections.Generic;
 using System.Linq;

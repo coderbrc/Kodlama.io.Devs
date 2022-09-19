@@ -3,6 +3,7 @@ using Application.Features.ProgrammingTechnologies.Rules;
 using Application.Features.UserGithubs.Rules;
 using Application.Features.Users.Rules;
 using corePackages.Application.Pipeline.Validation;
+using corePackages.Security.JWT;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +18,6 @@ namespace Application
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
-
             services.AddScoped<ProgrammingLanguageBusinessRules>(); 
             services.AddScoped<ProgrammingTechnologyBusinessRules>();
             services.AddScoped<UserGithubBusinessRules>();
